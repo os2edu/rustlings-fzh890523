@@ -16,14 +16,14 @@
 
 // Execute `rustlings hint errors5` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
 
 use std::error;
 use std::fmt;
 use std::num::ParseIntError;
 
 // TODO: update the return type of `main()` to make this compile.
-fn main() -> Result<(), Box<dyn ???>> {
+fn main() -> Result<(), Box<dyn error::Error>> {  // 1. 返回值size需要确定而trait不是，所以用Box（引用大小确定）； 2. 用dyn来指示引用的trait类型
+    // 就返回个 go error type，略迂回。。
     let pretend_user_input = "42";
     let x: i64 = pretend_user_input.parse()?;
     println!("output={:?}", PositiveNonzeroInteger::new(x)?);
