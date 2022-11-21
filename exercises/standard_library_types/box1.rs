@@ -16,11 +16,12 @@
 //
 // Execute `rustlings hint box1` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+
+// TODO y: lifetime 确实没懂，需要去看下
 
 #[derive(PartialEq, Debug)]
 pub enum List {
-    Cons(i32, List),
+    Cons(i32, Box<List>),  // TODO y: 为什么 &Box 就需要named lifetime？
     Nil,
 }
 
@@ -33,11 +34,11 @@ fn main() {
 }
 
 pub fn create_empty_list() -> List {
-    todo!()
+    List::Nil
 }
 
 pub fn create_non_empty_list() -> List {
-    todo!()
+    List::Cons(0, Box::new(List::Nil))  // 额
 }
 
 #[cfg(test)]
